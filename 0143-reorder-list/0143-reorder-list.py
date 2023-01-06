@@ -8,28 +8,57 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        fast = slow = head 
+        
+        
+        fast = slow = head
         
         while fast.next and fast.next.next:
-            slow = slow.next 
-            fast = fast.next.next 
-        n = slow.next 
-        slow.next = None
+            slow = slow.next
+            fast = fast.next.next
         
-        prev = None 
+        n = slow.next
+        slow.next = None
+        prev = None
+        
         while n:
-            temp = n.next 
-            n.next = prev 
+            temp = n.next
+            n.next = prev
             prev = n
-            n = temp 
-        n = head 
+            n = temp
+        n = head
+        #print(prev)
+        
         while prev:
-            temp = n.next 
-            tempprev = prev.next 
-            n.next = prev 
-            prev.next = temp 
+            temp = n.next
+            tempprev = prev.next
+            n.next = prev
+            prev.next = temp
             n = temp
             prev = tempprev
-        
         return head
+            
+#         fast = slow = head 
+        
+#         while fast.next and fast.next.next:
+#             slow = slow.next 
+#             fast = fast.next.next 
+#         n = slow.next 
+#         slow.next = None
+        
+#         prev = None 
+#         while n:
+#             temp = n.next 
+#             n.next = prev 
+#             prev = n
+#             n = temp 
+#         n = head 
+#         while prev:
+#             temp = n.next 
+#             tempprev = prev.next 
+#             n.next = prev 
+#             prev.next = temp 
+#             n = temp
+#             prev = tempprev
+        
+#         return head
         
