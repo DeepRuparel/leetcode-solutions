@@ -1,44 +1,33 @@
-from collections import Counter
-class Solution:
-    def sumOfFlooredPairs(self, nums: List[int]) -> int:
-        maximum = max(nums) + 1
-        hashmap = Counter(nums)
-        # print(hashmap)
+class Solution {
+    public int sumOfFlooredPairs(int[] nums) {
+        HashMap<Integer, Integer> freq = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (freq.containsKey(nums[i])) {
+                freq.put(nums[i], freq.get(nums[i]) + 1);
+            } else {
+                freq.put(nums[i], 1);
+            }
+        }
+        //System.out.println(freq);
+        int maximum = Arrays.stream(nums).max().getAsInt()+1;
+        long [] prerodersum = new long [maximum];
         
-        prefix_sum = [0] * maximum
-        
-        for i in range(1,maximum):
-            if i not in hashmap:
-                prefix_sum[i] = prefix_sum[i-1]
-            else:
-                prefix_sum[i] = prefix_sum[i-1] + hashmap[i]
-        #print(prefix_sum)
-        summ = 0
-        for i in (set(nums)):
-            for j in range(i,maximum,i):
-                summ += hashmap[i] * (prefix_sum[-1]-prefix_sum[j-1])
-        return summ % (10**9 +7)
-        
-        
-        
-#         maxi = max(nums) + 1
-#         dic = {}
-#         prefix=[0]*maxi
-#         for i in nums:
-#             if i in dic:
-#                 dic[i] += 1
-#             else:
-#                 dic[i] = 1
-#         #print(dic)
-#         for i in range(1,maxi):
-#             if i not in dic:
-#                 prefix[i] = prefix[i-1]
-#             else:
-#                 prefix[i] = prefix[i-1]+dic[i]
-        
-#         sumP = 0
-#         for i in set(nums):
-#             for j in range(i,maxi,i):
-#                 print(i, end = " ")
-#                 sumP += dic[i]*(prefix[-1]-prefix[j-1])
-#                 print(sumP)
+        for (int i = 1; i < maximum; i++){
+            if (freq.containsKey(i)){   
+                prerodersum[i] = freq.get(i) + prerodersum[i-1];
+            }
+            else{
+                prerodersum[i] = prerodersum[i-1];
+            }
+        }
+        long summ = 0;
+        Set<Integer> set = freq.keySet();
+        for (Integer i : set) {
+            for (int j = i; j < maximum; j += i){
+                summ += freq.get(i)*(prerodersum[maximum-1]-prerodersum[j-1]);
+            }
+        }
+        summ = summ % 1_000_000_007;
+        return (int)summ;
+    }
+}
