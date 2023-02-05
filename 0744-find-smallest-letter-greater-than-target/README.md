@@ -7,14 +7,14 @@
 
 <pre><strong>Input:</strong> letters = ["c","f","j"], target = "a"
 <strong>Output:</strong> "c"
-<strong>Explanation:</strong> The smallest character that is lexicogrpahically greater than 'a' in letters is 'c'.
+<strong>Explanation:</strong> The smallest character that is lexicographically greater than 'a' in letters is 'c'.
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
 <pre><strong>Input:</strong> letters = ["c","f","j"], target = "c"
 <strong>Output:</strong> "f"
-<strong>Explanation:</strong> The smallest character that is lexicogrpahically greater than 'c' in letters is 'f'.
+<strong>Explanation:</strong> The smallest character that is lexicographically greater than 'c' in letters is 'f'.
 </pre>
 
 <p><strong class="example">Example 3:</strong></p>
