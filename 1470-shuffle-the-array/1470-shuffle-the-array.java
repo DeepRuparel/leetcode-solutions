@@ -1,4 +1,9 @@
 class Solution {
+    /*
+    Time = O(n)
+    Soace = O(n)
+    
+    */
     public int[] shuffle(int[] nums, int n) {
        
         int [] ans = new int [nums.length];
