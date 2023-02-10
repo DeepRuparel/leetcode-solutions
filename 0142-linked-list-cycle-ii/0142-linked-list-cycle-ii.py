@@ -3,7 +3,11 @@
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
+# same approach as linked list cycle 
 
+'''
+now advance the head and slow until slow and head are equal this is your answer
+'''
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head: 
