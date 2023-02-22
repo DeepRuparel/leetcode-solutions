@@ -1,11 +1,21 @@
-class NumArray:
+class NumArray(object):
 
-    def __init__(self, nums: List[int]):
+    def __init__(self, nums):
+        """
+        :type nums: List[int]
+        """
         self.nums = nums
-        
 
-    def sumRange(self, left: int, right: int) -> int:
-        return sum(self.nums[left:right+1])
+    def sumRange(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: int
+        """
+        self.ans = 0
+        for i in range(left, right+1):
+            self.ans += self.nums[i]
+        return self.ans
 
 
 # Your NumArray object will be instantiated and called as such:
