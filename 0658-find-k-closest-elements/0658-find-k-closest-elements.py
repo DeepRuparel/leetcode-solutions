@@ -1,28 +1,23 @@
-class Solution:
-    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        n = len(arr)
-        res = deque()
+class Solution(object):
+    def findClosestElements(self, arr, k, x):
+        """
+        :type arr: List[int]
+        :type k: int
+        :type x: int
+        :rtype: List[int]
+        """
+        left = 0
+        right = len(arr) - k
         
-        right = bisect.bisect_left(arr, x)
-        left = right - 1
+        while left < right:
+            mid = left + (right - left)/ 2
+            if x - arr[mid] > arr[mid + k] - x:
+                left = mid + 1
+            else:
+                right = mid
         
-        while left >= 0 and right < n and k > 0:
-            left_delta = abs(x - arr[left])
-            right_delta = abs(x - arr[right])
-            if left_delta <= right_delta:
-                res.appendleft(arr[left])
-                left -= 1
-            else:
-                res.append(arr[right])    
-                right += 1
-            k -= 1
-        while k > 0:
-            if left >= 0:
-                res.appendleft(arr[left])
-                left -= 1
-            else:
-                res.append(arr[right])
-                right += 1      
-            k -= 1
-        return res
-                              
+        ans = []
+        
+        for i in range(left, left + k):
+            ans.append(arr[i])
+        return ans
