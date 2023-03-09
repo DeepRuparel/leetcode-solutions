@@ -3,29 +3,28 @@
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
-# same approach as linked list cycle 
 
-'''
-now advance the head and slow until slow and head are equal this is your answer
-'''
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head: 
-            return 
-        fast = slow = head
-        foundCycle = 0
+        # edge case:
+        if not head:
+            return None
+        slow = head
+        fast = head
+        flag = False
         while fast.next and fast.next.next:
-            slow = slow.next 
+            slow = slow.next
             fast = fast.next.next
+            
             if slow == fast:
-                foundCycle = 1
+                flag = True
                 break
-        
-        if foundCycle:
-            while head!= slow:
+        if flag:
+            while head:
+                if slow == head:
+                    return head
                 head = head.next
                 slow = slow.next
-            return head
-        else:
-            return None
-        
+                # if head == slow:
+                #     return head
+        return None
