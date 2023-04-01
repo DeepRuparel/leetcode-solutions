@@ -5,24 +5,24 @@ I pop the first element from the priority queue to get the lowest unreserved sea
 
 Recived TLE once then changed to set instead of a stack so TLE was beaten.
 '''
+"""
+Trying to use heap.
+"""
 from queue import PriorityQueue
+import heapq
 class SeatManager:
 
     def __init__(self, n: int):
-        self.q = PriorityQueue()
+        self.h = []
         for i in range(1, n+1):
-            self.q.put(i)
-        self.reserved = set()
+            self.h.append(i)
+        heapq.heapify(self.h)
 
     def reserve(self) -> int:
-        n = self.q.get()
-        self.reserved.add(n)
-        return n
+        return heapq.heappop(self.h)
 
     def unreserve(self, seatNumber: int) -> None:
-        if seatNumber in self.reserved:
-            self.reserved.remove(seatNumber)
-            self.q.put(seatNumber)
+        heapq.heappush(self.h, seatNumber)
         
 
 
