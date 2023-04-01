@@ -9,20 +9,20 @@ Recived TLE once then changed to set instead of a stack so TLE was beaten.
 Trying to use heap.
 """
 from queue import PriorityQueue
-import heapq
 class SeatManager:
 
     def __init__(self, n: int):
-        self.h = []
+        self.q = PriorityQueue()
         for i in range(1, n+1):
-            self.h.append(i)
-        heapq.heapify(self.h)
+            self.q.put(i)
 
     def reserve(self) -> int:
-        return heapq.heappop(self.h)
+        n = self.q.get()
+        return n
 
     def unreserve(self, seatNumber: int) -> None:
-        heapq.heappush(self.h, seatNumber)
+        
+        self.q.put(seatNumber)
         
 
 
