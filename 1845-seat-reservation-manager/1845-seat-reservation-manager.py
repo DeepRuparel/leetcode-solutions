@@ -2,6 +2,8 @@
 Thinking of something like having a priority queue because I want everythhing sorted in ascending order
 and a stack to keep track of all the assigned seats so incase I have something unreserved I pop from stack the  seat and pass it to priority queue
 I pop the first element from the priority queue to get the lowest unreserved seats
+
+Recived TLE once then changed to set instead of a stack so TLE was beaten.
 '''
 from queue import PriorityQueue
 class SeatManager:
