@@ -39,9 +39,9 @@ class Solution:
             inorder(root.right)
         # call inorder to get an sorted array
         inorder(root)
-        distance = [float("inf")] * len(sortedarray)
-        for i in range(1, len(distance)):
-            distance[i] = min(distance[i], sortedarray[i] - sortedarray[i-1])
+        distance = float("inf")
+        for i in range(1, len(sortedarray)):
+            distance = min(distance, sortedarray[i] - sortedarray[i-1])
         
-        return min(distance)
+        return (distance)
             
