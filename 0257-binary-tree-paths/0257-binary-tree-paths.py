@@ -26,8 +26,8 @@ class Solution:
         ans  = []
         for i in paths:
             ans.append(i[:-2])
-        print(ans)
+        #print(ans)
         return ans
-        return []
+        #return []
         
             
