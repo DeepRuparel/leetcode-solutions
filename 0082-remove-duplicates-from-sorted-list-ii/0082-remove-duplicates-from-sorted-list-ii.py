@@ -9,8 +9,8 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head:
-            return 
+        
+                
         
         curr = ListNode(0,head)
         prev = curr
