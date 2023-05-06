@@ -25,7 +25,7 @@ class Solution:
             
             #if not same make root as current node and the four children will be x1,y1, x1,y1+4, x1+4,y1 and x1+4 and y1+4
             else:
-                root = Node(False, False, solve(x1, y1,length // 2), solve(x1, y1 + length // 2, length // 2), solve(x1+length //2, y1, length // 2), solve(x1 + length // 2, y1 + length // 2, length // 2))
+                root = Node(1, False, solve(x1, y1,length // 2), solve(x1, y1 + length // 2, length // 2), solve(x1+length //2, y1, length // 2), solve(x1 + length // 2, y1 + length // 2, length // 2))
                 return root
             
         return solve(0, 0, len(grid))
