@@ -1,24 +1,21 @@
-class LRUCache(object):
+class LRUCache:
 
     def __init__(self, capacity):
         """
         :type capacity: int
         """
-        self.d = {}
-        self.l = deque([])
         self.capacity = capacity
+        self.d = OrderedDict()
+
     def get(self, key):
         """
         :type key: int
         :rtype: int
         """
-        val = -1
         if key in self.d:
-            val = self.d[key]
-            self.l.remove(key)
-            self.l.append(key)
-        return val
-            
+            self.d.move_to_end(key)
+            return self.d[key]
+        return -1
         
 
     def put(self, key, value):
@@ -27,17 +24,12 @@ class LRUCache(object):
         :type value: int
         :rtype: None
         """
-        if key in self.d:
-            self.l.remove(key)
-            self.l.append(key)
-            self.d[key] = value
+        if key not in self.d:
+            if len(self.d) == self.capacity:
+                self.d.popitem(last = False)
         else:
-            if len(self.l) == self.capacity:
-                keytopop = self.l.popleft()
-                self.d.pop(keytopop)
-            self.d[key] = value
-            self.l.append(key)
-            
+            self.d.move_to_end(key)
+        self.d[key] = value
         
 
 
