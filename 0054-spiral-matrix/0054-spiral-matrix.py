@@ -22,6 +22,7 @@ class Solution:
             bottom-=1
             
             for i in range(bottom -1 , top-1, -1):
+                #print(i,left)
                 ans.append(matrix[i][left])
             left+=1
         return ans
