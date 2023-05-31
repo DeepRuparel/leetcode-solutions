@@ -5,12 +5,14 @@ class Solution:
         ans = []
         for i in nums:
             if i in d:
-                d[i] += 1
-                if d[i] > n//3 and i not in ans:
+                d[i][0] += 1
+                if d[i][0] > n//3 and d[i][1] != 1:
                     ans.append(i)
+                    d[i][1] = 1
             else:
-                d[i] = 1
-                if d[i] > n//3:
+                d[i] = [1, 0]
+                if d[i][0] > n//3:
                     ans.append(i)
+                    d[i][1] = 1
         return ans
                 
